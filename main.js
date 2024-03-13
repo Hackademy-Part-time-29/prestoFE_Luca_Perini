@@ -32,11 +32,11 @@ let reviews = [
     <h3>${user.user}</h3>
     <p>"${user.description}"</p>
     <div class="stars">
-    <i class="bi bi-star"></i>
-    <i class="bi bi-star"></i>
-    <i class="bi bi-star"></i>
-    <i class="bi bi-star"></i>
-    <i class="bi bi-star"></i>
+    <i class="${user.rank > 0 ? "bi bi-star-fill" : "bi bi-star"}"></i>
+    <i class="${user.rank > 1 ? "bi bi-star-fill" : "bi bi-star"}"></i>
+    <i class="${user.rank > 2 ? "bi bi-star-fill" : "bi bi-star"}"></i>
+    <i class="${user.rank > 3 ? "bi bi-star-fill" : "bi bi-star"}"></i>
+    <i class="${user.rank > 4 ? "bi bi-star-fill" : "bi bi-star"}"></i>
 </div>
         </div>
         <div class="swiper-button-next"></div>

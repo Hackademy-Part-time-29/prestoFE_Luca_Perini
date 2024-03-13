@@ -25,7 +25,7 @@ h4 {
 
 /* NAVBAR */
 
-nav{
+nav {
     display: flex;
     justify-content: center;
     background-color: var(--primary);
@@ -121,9 +121,45 @@ nav{
 
 }
 
+@media screen and (max-width: 390px) {
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: var(--primary)
+    }
+
+    .navbar {
+        background-color: var(--secondary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 12px;
+        height: 10vh;
+        width: 100vw;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .navbar-options {
+        display: none;
+    }
+
+    .navbar-search>input {
+        border: 0px;
+        padding: 6px;
+        border-radius: 10px;
+        background-color: var(--primary);
+        width: 30vw;
+    }
+
+    .navbar-fixed {
+        display: none;
+    }
+}
+
 /* HEADER */
 
-header{
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,7 +168,7 @@ header{
     background-color: var(--primary);
 }
 
-.header-container{
+.header-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,16 +177,16 @@ header{
     color: var(--secondary);
 }
 
-.header-container>h1{
+.header-container>h1 {
     font-size: 72px;
 }
 
-.header-container>h3{
+.header-container>h3 {
     font-size: 24px;
-    
+
 }
 
-header>button{
+header>button {
     padding: 24px 48px;
     font-size: 24px;
     font-weight: bolder;
@@ -162,12 +198,12 @@ header>button{
     cursor: pointer;
 }
 
-header>button:hover{
+header>button:hover {
     background-color: #fc9300;
 }
 
 /* SWIPER */
-main{
+main {
     height: 80vh;
     margin-top: 10vh;
 }
@@ -176,9 +212,9 @@ main{
     width: 30vw;
     height: 40vh;
     border-radius: 24px;
-  }
+}
 
-  .swiper-slide {
+.swiper-slide {
     font-size: 18px;
     padding: 15px 30px;
     color: var(--primary);
@@ -187,32 +223,33 @@ main{
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
-  }
+}
 
-  .swiper-slide h3{
+.swiper-slide h3 {
     font-size: 36px;
-  }
+}
 
-  .stars{
+.stars {
     display: flex;
     flex-direction: row;
-  }
+}
 
-  .swiper-slide i{
+.swiper-slide i {
     font-size: 24px;
-  }
+    color: var(--accent);
+}
 
-  .swiper-slide img {
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
-  .swiper-button-next{
+.swiper-button-next {
     color: var(--tertiary);
-  }
+}
 
-  .swiper-button-prev{
+.swiper-button-prev {
     color: var(--tertiary);
-  }
+}
