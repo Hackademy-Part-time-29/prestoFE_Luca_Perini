@@ -4,6 +4,7 @@ let filterCategory = document.querySelector('#filter-categories');
 let articleFilter = document.querySelector('#article-filter');
 let priceInput = document.querySelector('#priceInput');
 let priceInputValue = document.querySelector('#priceInputValue');
+let wordInput = document.querySelector('#wordInput');
 
 window.addEventListener(`scroll`, () => {
     let scrolly = window.scrollY;
@@ -86,8 +87,11 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         showCards(filtered);
     }
     
+    function filterByWord(word){
+        let filtered = data.filter((annuncio)=> annuncio.name.toLowerCase().includes(word.toLowerCase()))
+        showCards(filtered);
+    };
     
-
     showCards(data);
     generateRadios();
     setPriceInput();
@@ -101,5 +105,8 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
     priceInput.addEventListener("input", ()=>{
         filterByPrice();
         priceInputValue.innerHTML= priceInput.value
+    })
+    wordInput.addEventListener("input", ()=> {
+        filterByWord(wordInput.value);
     })
 });

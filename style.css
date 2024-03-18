@@ -272,6 +272,7 @@ main {
     align-items: center;
     flex-direction: column;
     width: 30vw;
+    
 }
 
 .article-filter{
@@ -300,6 +301,21 @@ main {
 
 .price-category>label{
     margin-left: 6px;
+}
+
+.name-category{
+    margin-left: 6px;
+    padding: 12px;
+}
+
+.name-category>label{
+    margin-left: 6px;
+}
+
+.name-category>input{
+    padding: 12px;
+    border-radius: 12px;
+    border: 3px solid var(--accent);
 }
 
 .article-wrapper-container{
