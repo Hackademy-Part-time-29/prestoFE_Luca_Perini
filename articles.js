@@ -1,7 +1,9 @@
 let navbarFixed = document.querySelector(`#navbar-fixed`);
 let articleWrapperContainer = document.querySelector(`#article-wrapper-container`);
-let filterCategory = document.querySelector('#filter-categories')
-let articleFilter = document.querySelector('#article-filter')
+let filterCategory = document.querySelector('#filter-categories');
+let articleFilter = document.querySelector('#article-filter');
+let priceInput = document.querySelector('#priceInput');
+let priceInputValue = document.querySelector('#priceInputValue');
 
 window.addEventListener(`scroll`, () => {
     let scrolly = window.scrollY;
@@ -67,8 +69,28 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         }
 
     }
+
+    function setPriceInput(){
+        let prices = data.map((annuncio) => +annuncio.price);
+        prices.sort((a,b)=> a - b);
+        let maxPrice = Math.ceil(prices.pop());
+        let minPrice = Math.floor(prices.shift());
+        priceInput.max = maxPrice;
+        priceInput.min = minPrice;
+        priceInput.value = maxPrice;
+        priceInputValue.innerHTML = maxPrice;
+    }
+
+    function filterByPrice(){
+        let filtered = data.filter((article) => +article.price <= priceInput.value);
+        showCards(filtered);
+    }
+    
+    
+
     showCards(data);
     generateRadios();
+    setPriceInput();
 
     let radioButtons = document.querySelectorAll('.categoryForm');
     radioButtons.forEach((button) => {
@@ -76,5 +98,8 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
             filterByCategory(button.id);
         });
     });
-
+    priceInput.addEventListener("input", ()=>{
+        filterByPrice();
+        priceInputValue.innerHTML= priceInput.value
+    })
 });
