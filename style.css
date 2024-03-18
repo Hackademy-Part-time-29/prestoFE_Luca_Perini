@@ -263,6 +263,45 @@ main {
 
 /* ARTICLES */
 
+.container{
+    display: flex;
+}
+
+.article-filter-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.article-filter{
+    background-color: var(--primary);
+    color: var(--tertiary);
+    width: 15vw;
+    padding: 20px;
+    display: flex;
+    margin-top: 24px;
+    flex-direction: column;
+}
+
+.filter-category{
+    margin-left: 6px;
+    padding: 12px;
+}
+
+.filter-category>label{
+    margin-left: 6px;
+}
+
+.price-category{
+    margin-left: 6px;
+    padding: 12px;
+}
+
+.price-category>label{
+    margin-left: 6px;
+}
+
 .article-wrapper-container{
     width: 70vw;
     display: flex;

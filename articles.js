@@ -1,5 +1,7 @@
 let navbarFixed = document.querySelector(`#navbar-fixed`);
 let articleWrapperContainer = document.querySelector(`#article-wrapper-container`);
+let filterCategory = document.querySelector('#filter-categories')
+let articleFilter = document.querySelector('#article-filter')
 
 window.addEventListener(`scroll`, () => {
     let scrolly = window.scrollY;
@@ -24,6 +26,7 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
     }
 
     function showCards(data) {
+        articleWrapperContainer.innerHTML = '';
         data.forEach((card) => {
             let article = document.createElement('div');
             article.classList.add('article-wrapper');
@@ -35,6 +38,43 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         });
     }
 
-    showCards(data);
+    function generateRadios() {
+        let categories = data.map((annuncio) => annuncio.category);
+        let uniqueCategories = [];
+        categories.forEach((category) => {
+            if (!uniqueCategories.includes(category)) {
+                uniqueCategories.push(category)
+            }
+        })
+        console.log(uniqueCategories);
+        uniqueCategories.forEach((category) => {
+            let div = document.createElement('div');
+            div.classList.add('filter-category');
+            div.innerHTML = `
+            <input class="categoryForm" type="radio" name="categoryRadios" id="${category}">
+            <label class="categoryForm" for="${category}">${category}</label>`;
+            articleFilter.appendChild(div)
 
-})
+        })
+    }
+
+    function filterByCategory(category) {
+        if (category != "All") {
+            let filtered = data.filter((article) => article.category == category);
+            showCards(filtered);
+        } else{
+            showCards(data);
+        }
+
+    }
+    showCards(data);
+    generateRadios();
+
+    let radioButtons = document.querySelectorAll('.categoryForm');
+    radioButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            filterByCategory(button.id);
+        });
+    });
+
+});

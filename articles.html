@@ -37,11 +37,29 @@
         </div>
 
     </nav>
-    <section class="article-wrapper-container" id="article-wrapper-container">
+    <main class="container">
+        <section class="article-filter-container">
+            <div class="article-filter" id="article-filter">
+                <h3>Filtra per categoria:</h3>
+                <div class="filter-category" id="filter-categories">                    
+                    <input class="categoryForm" type="radio" name="categoryRadios" id="All" checked>
+                    <label  class="categoryForm" for="All">All</label>
+                </div>
+            </div>
+            <div class="article-filter" id="article-filter">
+                <h3>Filtra per prezzo:</h3>
+                <div class="price-category" id="price-categories">                    
+                    <input type="range" name="priceRadios" id="price" min="0" max="1000">
+                    
+                </div>
+            </div>
+        </section>
+        <section class="article-wrapper-container" id="article-wrapper-container">
 
-    </section>
+        </section>
+    </main>
+
     <script src="articles.js"></script>
 </body>
 
 </html>
-
