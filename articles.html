@@ -10,7 +10,6 @@
     <link href="https://api.fontshare.com/v2/css?f[]=ranade@300&f[]=excon@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <nav>
         <div class="navbar" id="navbar-fixed">
@@ -21,7 +20,7 @@
             </div>
             <ul class="navbar-options">
                 <li>
-                    <a class="current" href="index.html">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="">Feature</a>
@@ -29,18 +28,18 @@
                 <li>
                     <a href="">Pricing</a>
                 </li>
+                <li>
+                    <a class="current" href="">Articles</a>
+                </li>
             </ul>
-            <div class="navbar-search">
-                <label id="search-input" for="text"><i class="bi bi-search"></i></label>
-                <input type="text" placeholder="Search">
-            </div>
+
         </div>
 
     </nav>
     <main class="container">
         <section class="article-filter-container">
             <div class="article-filter" id="article-filter">
-                <h3>Filtra per categoria:</h3>
+                <h3><i class="bi bi-filter"></i> Filtra per categoria:</h3>
                 <div class="filter-category" id="filter-categories">                    
                     <input class="categoryForm" type="radio" name="categoryRadios" id="All" checked>
                     <label  class="categoryForm" for="All">All</label>
@@ -48,7 +47,7 @@
             </div>
 
             <div class="article-filter" id="article-filter">
-                <h3>Filtra per prezzo:</h3>
+                <h3><i class="bi bi-filter"></i> Filtra per prezzo:</h3>
                 <div class="price-category" id="price-categories">                    
                     <input type="range" name="priceRadios" id="priceInput" min="0" max="1000">
                     <p id="priceInputValue">0</p>
@@ -56,7 +55,7 @@
                 </div>
             </div>
             <div class="article-filter" id="article-filter">
-                <h3>Filtra per nome:</h3>
+                <h3><i class="bi bi-filter"></i> Filtra per nome:</h3>
                 <div class="name-category" id="name-categories">                    
                     <input type="text" name="nameRadios" id="wordInput" placeholder="Keyword here">
                 </div>

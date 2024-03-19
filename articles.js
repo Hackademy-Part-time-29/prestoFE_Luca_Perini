@@ -61,19 +61,22 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         })
     }
 
-    function filterByCategory(category) {
+    function filterByCategory(array) {
+        let selectedButton = Array.from(radioButtons).find((button) => button.checked);
+        category = selectedButton.id
+
         if (category != "All") {
-            let filtered = data.filter((article) => article.category == category);
-            showCards(filtered);
-        } else{
-            showCards(data);
+            let filtered = array.filter((article) => article.category == category);
+            return filtered;
+        } else {
+            return array;
         }
 
     }
 
-    function setPriceInput(){
+    function setPriceInput() {
         let prices = data.map((annuncio) => +annuncio.price);
-        prices.sort((a,b)=> a - b);
+        prices.sort((a, b) => a - b);
         let maxPrice = Math.ceil(prices.pop());
         let minPrice = Math.floor(prices.shift());
         priceInput.max = maxPrice;
@@ -82,16 +85,23 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         priceInputValue.innerHTML = maxPrice;
     }
 
-    function filterByPrice(){
-        let filtered = data.filter((article) => +article.price <= priceInput.value);
-        showCards(filtered);
+    function filterByPrice(array) {
+        let filtered = array.filter((article) => +article.price <= priceInput.value);
+        return filtered
     }
-    
-    function filterByWord(word){
-        let filtered = data.filter((annuncio)=> annuncio.name.toLowerCase().includes(word.toLowerCase()))
-        showCards(filtered);
-    };
-    
+
+    function filterByWord(array) {
+        let filtered = array.filter((annuncio) => annuncio.name.toLowerCase().includes(wordInput.value.toLowerCase()));
+
+        return filtered;
+    }
+
+    function globalFilter() {
+        let filteredByCategory = filterByCategory(data);
+        let filteredByCategoryAndPrice = filterByPrice(filteredByCategory);
+        let filteredByCategoryAndPriceAndWord = filterByWord(filteredByCategoryAndPrice);
+        showCards(filteredByCategoryAndPriceAndWord)
+    }
     showCards(data);
     generateRadios();
     setPriceInput();
@@ -99,14 +109,15 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
     let radioButtons = document.querySelectorAll('.categoryForm');
     radioButtons.forEach((button) => {
         button.addEventListener('click', () => {
+            globalFilter();
             filterByCategory(button.id);
         });
     });
-    priceInput.addEventListener("input", ()=>{
-        filterByPrice();
-        priceInputValue.innerHTML= priceInput.value
+    priceInput.addEventListener("input", () => {
+        globalFilter();
+        priceInputValue.innerHTML = `${priceInput.value} $`
     })
-    wordInput.addEventListener("input", ()=> {
-        filterByWord(wordInput.value);
+    wordInput.addEventListener("input", () => {
+        globalFilter();
     })
 });

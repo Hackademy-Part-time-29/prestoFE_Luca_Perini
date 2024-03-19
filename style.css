@@ -6,7 +6,12 @@
 }
 
 body {
-    background-color: var(--tertiary);
+    background-color: #19344b;
+}
+
+main {
+    height: 80vh;
+    
 }
 
 :root {
@@ -23,8 +28,8 @@ h4 {
     font-family: 'Excon', sans-serif;
 }
 
-.current{
-color: var(--accent);
+.current {
+    color: var(--accent);
 }
 
 /* NAVBAR */
@@ -120,47 +125,19 @@ nav {
     list-style: none;
 }
 
-.navbar-options>li a {
+li>a {
     text-decoration: none;
+    color: #cad1b6;
+    font-weight: 300;
+
+}
+
+.current {
     color: var(--primary);
-
+    font-weight: bold;
 }
 
-@media screen and (max-width: 390px) {
-    nav {
-        display: flex;
-        justify-content: center;
-        background-color: var(--primary)
-    }
 
-    .navbar {
-        background-color: var(--secondary);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0px 12px;
-        height: 10vh;
-        width: 100vw;
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    .navbar-options {
-        display: none;
-    }
-
-    .navbar-search>input {
-        border: 0px;
-        padding: 6px;
-        border-radius: 10px;
-        background-color: var(--primary);
-        width: 30vw;
-    }
-
-    .navbar-fixed {
-        display: none;
-    }
-}
 
 /* HEADER */
 
@@ -208,17 +185,43 @@ header>a:hover {
     background-color: #fc9300;
 }
 
+/* NUMBERS-SECTION */
+ .numbers-wrapper{
+    background-color: var(--tertiary);
+    display: flex;
+    align-items: center; 
+    
+    width: 100vw;
+    height: 60vh;
+    
+ }
+
+ .numbers-wrapper-text{
+    color: var(--accent);
+    font-size: 20px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+
+ .numbers-wrapper-img-2 img{
+   height: 40vh;
+ }
+
+ .numbers-wrapper-img img{
+
+    height: 60vh;
+
+ }
+
 /* SWIPER */
-main {
-    background-color: #265073;
-    height: 80vh;
-    margin-top: 10vh;
-}
 
 .swiper {
     width: 30vw;
     height: 40vh;
     border-radius: 24px;
+    margin-top: 36px;
 }
 
 .swiper-slide {
@@ -230,6 +233,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
+    
 }
 
 .swiper-slide h3 {
@@ -263,62 +267,71 @@ main {
 
 /* ARTICLES */
 
-.container{
+.container {
     display: flex;
 }
 
-.article-filter-container{
+.article-filter-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 30vw;
-    
+
 }
 
-.article-filter{
+.article-filter-container h3 {
+    background-color: #d9e0c3;
+    padding: 20px;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.article-filter {
     background-color: var(--primary);
     color: var(--tertiary);
     width: 15vw;
-    padding: 20px;
+
     display: flex;
     margin-top: 24px;
     flex-direction: column;
+    border-radius: 6px;
 }
 
-.filter-category{
+.filter-category {
     margin-left: 6px;
     padding: 12px;
 }
 
-.filter-category>label{
+.filter-category>label {
     margin-left: 6px;
+    font-weight: bold;
 }
 
-.price-category{
-    margin-left: 6px;
-    padding: 12px;
-}
-
-.price-category>label{
-    margin-left: 6px;
-}
-
-.name-category{
+.price-category {
     margin-left: 6px;
     padding: 12px;
 }
 
-.name-category>label{
+.price-category>p {
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.name-category {
+    margin-left: 6px;
+    padding: 12px;
+}
+
+.name-category>label {
     margin-left: 6px;
 }
 
-.name-category>input{
+.name-category>input {
     padding: 12px;
     border-radius: 12px;
     border: 3px solid var(--accent);
 }
 
-.article-wrapper-container{
+.article-wrapper-container {
     width: 70vw;
     display: flex;
     flex-wrap: wrap;
@@ -326,26 +339,26 @@ main {
 
 }
 
-.article-wrapper{
+.article-wrapper {
     margin: 24px;
     background-color: var(--primary);
-    border-radius: 36px;
+    border-radius: 24px;
     padding: 24px;
     height: 300px;
     width: 300px;
     color: var(--tertiary);
-    font-size:x-large;
+    font-size: large;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.article-wrapper>img{
+.article-wrapper>img {
     width: 180px;
     height: 120px;
     border-radius: 12px;
 }
 
-.article-price{
+.article-price {
     color: var(--accent);
 }
