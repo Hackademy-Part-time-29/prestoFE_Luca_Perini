@@ -339,8 +339,8 @@ header>a:hover {
     width: 70vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    min-height: 120vh;
+    justify-content: flex-start;
+    
 
 }
 
