@@ -33,12 +33,27 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         data.forEach((card) => {
             let article = document.createElement('div');
             article.classList.add('article-wrapper');
-            article.innerHTML = `<h3 title="${card.name}">${lenghtRemove(card.name)}</h3>
+            article.innerHTML = `<h3 title="${card.name}"><i class="bi ${favourites.includes(card.id.toString()) ? `bi-bookmark-fill` : `bi-bookmark`}" id="${card.id}"></i> ${lenghtRemove(card.name)}</h3>
             <img src="https://picsum.photos/150" alt="">
             <h4>-${card.category}</h4>
             <h4 class="article-price">${card.price} $</h4> `;
             articleWrapperContainer.appendChild(article);
         });
+
+        let favouriteIcons = document.querySelectorAll(`.bi`);
+        favouriteIcons.forEach((icon) => {
+            icon.addEventListener(`click`, () => {
+                if (!favourites.includes(icon.id)) {
+                    favourites.push(icon.id);
+                    console.log(favourites);
+                } else {
+                    let index = favourites.indexOf(icon.id);
+                    favourites.splice(index, 1);
+                    console.log(favourites);
+                }
+                    globalFilter()
+            })
+        })
     }
 
     function generateRadios() {
@@ -58,20 +73,23 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
             <label class="categoryForm" for="${category}">${category}</label>`;
             articleFilter.appendChild(div)
 
-        })
+        });
     }
 
     function filterByCategory(array) {
         let selectedButton = Array.from(radioButtons).find((button) => button.checked);
         category = selectedButton.id
 
-        if (category != "All") {
-            let filtered = array.filter((article) => article.category == category);
+        if (category == "All") {
+            return array;
+        } else if(category == "favourites") {
+            let filtered = array.filter((article) => favourites.includes(article.id.toString()));
             return filtered;
         } else {
-            return array;
+            let filtered = array.filter((article) => article.category == category);
+            return filtered;
         }
-
+        
     }
 
     function setPriceInput() {
@@ -102,6 +120,8 @@ fetch('./articles.json').then((response) => response.json()).then((data) => {
         let filteredByCategoryAndPriceAndWord = filterByWord(filteredByCategoryAndPrice);
         showCards(filteredByCategoryAndPriceAndWord)
     }
+
+    let favourites = [];
     showCards(data);
     generateRadios();
     setPriceInput();

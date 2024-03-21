@@ -1,6 +1,8 @@
 let navbarFixed = document.querySelector(`#navbar-fixed`);
-let swiperSlide = document.querySelector(`#swiper-slide`)
-
+let swiperSlide = document.querySelector(`#swiper-slide`);
+let numberOne = document.querySelector(`#numberOne`);
+let numberTwo = document.querySelector(`#numberTwo`);
+let numberThree = document.querySelector(`#numberThree`);
 
 let reviews = [
   {
@@ -24,11 +26,11 @@ let reviews = [
     rank: 4,
   },
 ];
- 
-  reviews.forEach((user) => {
-    let div = document.createElement(`div`);
-    div.classList.add(`swiper-slide`);
-    div.innerHTML = `<div class="swiper-slide" id="swiper-slide">
+
+reviews.forEach((user) => {
+  let div = document.createElement(`div`);
+  div.classList.add(`swiper-slide`);
+  div.innerHTML = `<div class="swiper-slide" id="swiper-slide">
     <h3>${user.user}</h3>
     <p>"${user.description}"</p>
     <div class="stars">
@@ -41,13 +43,13 @@ let reviews = [
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>`;
-    swiperSlide.appendChild(div);
-  });
+  swiperSlide.appendChild(div);
+});
 
 
 window.addEventListener(`scroll`, () => {
   let scrolly = window.scrollY;
-  if (scrolly > 1) {
+  if (scrolly > 1000) {
     navbarFixed.classList.remove(`navbar`);
     navbarFixed.classList.add(`navbar-fixed`);
   } else {
@@ -64,3 +66,41 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+function interval(name, arrive, timing) {
+
+  let counter = 0;
+  let interval = setInterval(() => {
+    if (counter < arrive) {
+      counter++;
+      name.innerHTML = counter;
+    } else {
+      clearInterval(interval);
+    }
+  }, timing)
+
+  setTimeout(() => {
+    timeReset = true;
+  }, 10000)
+
+}
+
+let timeReset = true;
+
+let observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && timeReset) {
+      timeReset = false;
+      interval(numberOne, 235, 20);
+      interval(numberTwo, 120, 40);
+      interval(numberThree, 268, 20);
+    }
+  })
+});
+observer.observe(numberOne);
+observer.observe(numberTwo);
+observer.observe(numberThree);
+
+
+
+

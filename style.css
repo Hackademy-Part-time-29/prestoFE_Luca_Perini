@@ -5,6 +5,8 @@
     font-family: 'Ranade', sans-serif;
 }
 
+
+
 body {
     background-color: #19344b;
 }
@@ -276,6 +278,8 @@ header>a:hover {
     align-items: center;
     flex-direction: column;
     width: 30vw;
+    min-height: 120vh;
+    
 
 }
 
@@ -336,13 +340,14 @@ header>a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    min-height: 120vh;
 
 }
 
 .article-wrapper {
     margin: 24px;
     background-color: var(--primary);
-    border-radius: 24px;
+    border-radius: 12px;
     padding: 24px;
     height: 300px;
     width: 300px;
@@ -351,6 +356,10 @@ header>a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.article-wrapper i{
+    cursor: pointer;
 }
 
 .article-wrapper>img {
